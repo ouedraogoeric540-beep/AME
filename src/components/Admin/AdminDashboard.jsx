@@ -7,13 +7,8 @@ import {
   HelpCircle,
   RefreshCw,
   LogOut,
-  ArrowLeft,
-  GitCommit,
-  Save,
-  CheckCircle,
-  AlertCircle
+  ArrowLeft
 } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import CoupleInfoEditor from './CoupleInfoEditor';
 import SweetWordsEditor from './SweetWordsEditor';
 import CapsulesEditor from './CapsulesEditor';
@@ -22,11 +17,11 @@ import QuizEditor from './QuizEditor';
 import fallbackSiteData from '../../data/siteData.json';
 
 const tabs = [
-  { id: 'couple', label: 'Couple & Date', icon: Heart, badge: '💑' },
-  { id: 'words', label: 'Mots Doux', icon: Sparkles, badge: '✨' },
-  { id: 'capsules', label: 'Lettres d\'Amour', icon: Mail, badge: '💌' },
-  { id: 'coupons', label: 'Privilèges & Cadeaux', icon: Gift, badge: '🎁' },
-  { id: 'quiz', label: 'Questionnaire', icon: HelpCircle, badge: '❓' }
+  { id: 'couple',   label: 'Couple',     icon: Heart,       emoji: '💑' },
+  { id: 'words',    label: 'Mots',       icon: Sparkles,    emoji: '✨' },
+  { id: 'capsules', label: 'Lettres',    icon: Mail,        emoji: '💌' },
+  { id: 'coupons',  label: 'Cadeaux',    icon: Gift,        emoji: '🎁' },
+  { id: 'quiz',     label: 'Quiz',       icon: HelpCircle,  emoji: '❓' }
 ];
 
 export default function AdminDashboard({ token, onLogout, onBackToSite }) {
@@ -34,315 +29,261 @@ export default function AdminDashboard({ token, onLogout, onBackToSite }) {
   const [siteData, setSiteData] = useState(fallbackSiteData);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
-  const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
-  const [dataSource, setDataSource] = useState('');
 
-  // Fetch full site data from GitHub
   const fetchSiteData = useCallback(async () => {
     setIsLoading(true);
-    setError('');
-
     try {
       const res = await fetch('/api/site-data-get', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
-
-      if (!res.ok) {
-        throw new Error(`Erreur ${res.status}: Impossible de charger les données.`);
-      }
-
       const data = await res.json();
-      if (data.siteData) {
-        setSiteData(data.siteData);
-      }
-      setDataSource(data.source || 'github');
-      if (data.warning) {
-        setNotice(data.warning);
-      }
+      if (data.siteData) setSiteData(data.siteData);
+      if (data.warning) setNotice(data.warning);
     } catch {
-      // Offline / local fallback
       setSiteData(fallbackSiteData);
-      setDataSource('local');
-      setNotice('Mode local actif : modification des données du site.');
+      setNotice('Mode local actif.');
     } finally {
       setIsLoading(false);
     }
   }, [token]);
 
-  useEffect(() => {
-    fetchSiteData();
-  }, [fetchSiteData]);
+  useEffect(() => { fetchSiteData(); }, [fetchSiteData]);
 
-  const showToast = (message) => {
-    setNotice(message);
+  const showToast = (msg) => {
+    setNotice(msg);
     setTimeout(() => setNotice(''), 4000);
   };
 
-  // General save handler for sections
-  const handleSaveSection = async (sectionName, updatedSectionData) => {
+  const handleSaveSection = async (sectionName, sectionData) => {
     setIsSaving(true);
-    setError('');
-
-    const newFullData = {
-      ...siteData,
-      [sectionName]: updatedSectionData
-    };
-
-    setSiteData(newFullData);
-
+    const newFull = { ...siteData, [sectionName]: sectionData };
+    setSiteData(newFull);
     try {
       const res = await fetch('/api/site-data-save', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify({
-          siteData: newFullData,
-          sectionName
-        })
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+        body: JSON.stringify({ siteData: newFull, sectionName })
       });
-
       const data = await res.json();
-      if (!res.ok) {
-        throw new Error(data.error || 'Erreur lors de l\'enregistrement.');
-      }
-
-      showToast(`Section "${sectionName}" enregistrée et synchronisée avec GitHub !`);
+      if (!res.ok) throw new Error(data.error);
+      showToast('✅ Enregistré et synchronisé !');
     } catch (err) {
-      showToast(`Enregistré localement (${err.message}).`);
+      showToast(`💾 Enregistré localement (${err.message}).`);
     } finally {
       setIsSaving(false);
     }
   };
 
-  // Specific handlers
-  const handleSaveCouple = (coupleData) => handleSaveSection('couple', coupleData);
-  const handleSaveWords = (wordsData) => handleSaveSection('sweetWords', wordsData);
-  const handleSaveCapsules = (capsulesData) => handleSaveSection('capsules', capsulesData);
   const handleSaveCouponsAndScratch = ({ scratchSecret, coupons }) => {
     setIsSaving(true);
-    const newFullData = { ...siteData, scratchSecret, coupons };
-    setSiteData(newFullData);
+    const newFull = { ...siteData, scratchSecret, coupons };
+    setSiteData(newFull);
     fetch('/api/site-data-save', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({ siteData: newFullData, sectionName: 'Privilèges & Carte à gratter' })
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({ siteData: newFull, sectionName: 'Privilèges' })
     })
-      .then(() => showToast('Privilèges & Carte mystère enregistrés sur GitHub !'))
-      .catch((err) => showToast(`Enregistré localement (${err.message}).`))
+      .then(() => showToast('🎁 Privilèges enregistrés !'))
+      .catch((e) => showToast(`💾 ${e.message}`))
       .finally(() => setIsSaving(false));
   };
 
-  // Quiz questions handlers
-  const handleAddQuestion = (newQ) => {
-    const currentQuestions = siteData.quiz?.questions || [];
-    const updated = [...currentQuestions, newQ];
-    const newQuiz = { ...(siteData.quiz || {}), questions: updated };
-    handleSaveSection('quiz', newQuiz);
+  const handleAddQuestion = (q) => {
+    const qs = [...(siteData.quiz?.questions || []), q];
+    handleSaveSection('quiz', { ...(siteData.quiz || {}), questions: qs });
   };
-
-  const handleUpdateQuestion = (updatedQ) => {
-    const currentQuestions = siteData.quiz?.questions || [];
-    const updated = currentQuestions.map(q => q.id === updatedQ.id ? updatedQ : q);
-    const newQuiz = { ...(siteData.quiz || {}), questions: updated };
-    handleSaveSection('quiz', newQuiz);
+  const handleUpdateQuestion = (q) => {
+    const qs = (siteData.quiz?.questions || []).map(x => x.id === q.id ? q : x);
+    handleSaveSection('quiz', { ...(siteData.quiz || {}), questions: qs });
   };
-
-  const handleToggleQuestion = (qId) => {
-    const currentQuestions = siteData.quiz?.questions || [];
-    const updated = currentQuestions.map(q => q.id === qId ? { ...q, active: !q.active } : q);
-    const newQuiz = { ...(siteData.quiz || {}), questions: updated };
-    handleSaveSection('quiz', newQuiz);
+  const handleToggleQuestion = (id) => {
+    const qs = (siteData.quiz?.questions || []).map(q => q.id === id ? { ...q, active: !q.active } : q);
+    handleSaveSection('quiz', { ...(siteData.quiz || {}), questions: qs });
   };
-
-  const handleDeleteQuestion = (qId) => {
-    const currentQuestions = siteData.quiz?.questions || [];
-    const updated = currentQuestions.filter(q => q.id !== qId);
-    const newQuiz = { ...(siteData.quiz || {}), questions: updated };
-    handleSaveSection('quiz', newQuiz);
+  const handleDeleteQuestion = (id) => {
+    const qs = (siteData.quiz?.questions || []).filter(q => q.id !== id);
+    handleSaveSection('quiz', { ...(siteData.quiz || {}), questions: qs });
   };
 
   return (
-    <div style={{ padding: '20px 16px 60px', maxWidth: '820px', margin: '0 auto' }}>
-      {/* Top Navbar */}
+    <div style={{
+      minHeight: '100dvh',
+      maxWidth: '100vw',
+      overflowX: 'hidden',
+      padding: '0 0 80px 0',
+      background: 'linear-gradient(135deg, #fff5f7 0%, #ffeef2 50%, #fdf2f8 100%)'
+    }}>
+
+      {/* ── TOP HEADER MOBILE ── */}
       <div style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 50,
+        background: 'rgba(255, 255, 255, 0.92)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(254, 205, 219, 0.7)',
+        padding: '10px 14px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        flexWrap: 'wrap',
-        gap: '10px',
-        marginBottom: '20px',
-        paddingBottom: '16px',
-        borderBottom: '1px solid rgba(254, 205, 219, 0.6)'
+        gap: '8px'
       }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        {/* Left: back + title */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
           <button
             onClick={onBackToSite}
-            className="btn-secondary"
-            style={{ padding: '8px 14px', fontSize: '0.8rem', gap: '6px' }}
+            style={{
+              width: '36px', height: '36px', borderRadius: '10px',
+              border: '1px solid rgba(254, 205, 219, 0.8)',
+              background: '#fff', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0, color: '#be123c'
+            }}
           >
-            <ArrowLeft size={15} />
-            <span>Voir le site</span>
+            <ArrowLeft size={17} />
           </button>
-
-          <div>
-            <h1 style={{
+          <div style={{ minWidth: 0 }}>
+            <div style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.45rem',
-              fontWeight: 700,
-              color: '#2b1b22',
-              lineHeight: 1.1,
-              margin: 0
+              fontSize: '1.05rem', fontWeight: 700,
+              color: '#2b1b22', lineHeight: 1.1,
+              whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis'
             }}>
-              MalMe • Administration Globale
-            </h1>
-            <span style={{ fontSize: '0.72rem', color: '#8a6877' }}>
-              100% personnalisable • Zéro base de données
-            </span>
+              MalMe Admin
+            </div>
+            <div style={{ fontSize: '0.65rem', color: '#8a6877' }}>
+              100% personnalisable
+            </div>
           </div>
         </div>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        {/* Right: refresh + logout */}
+        <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
           <button
             onClick={fetchSiteData}
             disabled={isLoading}
-            className="btn-secondary"
-            style={{ padding: '8px 12px', fontSize: '0.8rem' }}
-            title="Rafraîchir depuis GitHub"
+            style={{
+              width: '36px', height: '36px', borderRadius: '10px',
+              border: '1px solid rgba(254, 205, 219, 0.8)',
+              background: '#fff', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              color: '#8a6877'
+            }}
+            title="Rafraîchir"
           >
             <RefreshCw size={15} className={isLoading ? 'animate-spin' : ''} />
           </button>
-
           <button
             onClick={onLogout}
-            className="btn-secondary"
-            style={{ padding: '8px 14px', fontSize: '0.8rem', color: '#be123c' }}
+            style={{
+              height: '36px', padding: '0 12px', borderRadius: '10px',
+              border: '1px solid rgba(254, 205, 219, 0.8)',
+              background: '#fff', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: '5px',
+              color: '#be123c', fontSize: '0.78rem', fontWeight: 600
+            }}
           >
-            <LogOut size={15} />
-            <span>Déconnexion</span>
+            <LogOut size={14} />
+            <span>Sortir</span>
           </button>
         </div>
       </div>
 
-      {/* Notice Toast */}
+      {/* ── TOAST NOTICE ── */}
       {notice && (
         <div className="animate-fade-in" style={{
-          padding: '12px 16px',
-          borderRadius: '14px',
-          background: 'linear-gradient(135deg, rgba(236, 253, 245, 0.95), rgba(240, 253, 244, 0.95))',
+          margin: '10px 14px 0',
+          padding: '10px 14px',
+          borderRadius: '12px',
+          background: 'rgba(236, 253, 245, 0.95)',
           border: '1px solid #a7f3d0',
           color: '#065f46',
-          fontSize: '0.85rem',
+          fontSize: '0.82rem',
           fontWeight: 500,
-          marginBottom: '18px',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '10px',
-          boxShadow: '0 4px 14px rgba(16, 185, 129, 0.1)'
+          display: 'flex', alignItems: 'flex-start', gap: '8px'
         }}>
-          <Sparkles size={16} color="#059669" style={{ flexShrink: 0 }} />
-          <span style={{ flex: 1 }}>{notice}</span>
+          <Sparkles size={14} color="#059669" style={{ flexShrink: 0, marginTop: '2px' }} />
+          <span>{notice}</span>
         </div>
       )}
 
-      {/* Navigation Tabs Bar */}
+      {/* ── TABS SCROLLABLE ── */}
       <div style={{
-        display: 'flex',
-        gap: '8px',
         overflowX: 'auto',
-        paddingBottom: '10px',
-        marginBottom: '22px'
+        overflowY: 'visible',
+        WebkitOverflowScrolling: 'touch',
+        scrollbarWidth: 'none',
+        display: 'flex',
+        gap: '6px',
+        padding: '12px 14px 4px',
+        /* hide scrollbar Chrome */
       }}>
         {tabs.map(tab => {
           const isActive = activeTab === tab.id;
-          const Icon = tab.icon;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               style={{
-                padding: '11px 18px',
-                borderRadius: '16px',
+                flexShrink: 0,
+                padding: '8px 14px',
+                borderRadius: '20px',
                 border: isActive ? '1.5px solid #ff3366' : '1px solid rgba(254, 205, 219, 0.7)',
                 background: isActive ? 'linear-gradient(135deg, #ff3366, #ec4899)' : '#fff',
                 color: isActive ? '#fff' : '#4a2c39',
                 fontWeight: isActive ? 700 : 500,
-                fontSize: '0.85rem',
+                fontSize: '0.82rem',
                 cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px',
+                display: 'flex', alignItems: 'center', gap: '5px',
                 whiteSpace: 'nowrap',
-                boxShadow: isActive ? '0 6px 18px rgba(244, 63, 94, 0.28)' : '0 2px 6px rgba(0,0,0,0.02)',
-                transform: isActive ? 'scale(1.02)' : 'scale(1)',
-                transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)'
+                boxShadow: isActive ? '0 4px 14px rgba(244, 63, 94, 0.3)' : '0 1px 4px rgba(0,0,0,0.04)',
+                transition: 'all 0.2s cubic-bezier(0.16, 1, 0.3, 1)',
+                WebkitTapHighlightColor: 'transparent'
               }}
             >
-              <Icon size={16} />
+              <span style={{ fontSize: '0.9rem' }}>{tab.emoji}</span>
               <span>{tab.label}</span>
             </button>
           );
         })}
       </div>
 
-      {/* Active Tab Content */}
-      {isLoading ? (
-        <div style={{ textAlign: 'center', padding: '50px 0', color: '#8a6877' }}>
-          <RefreshCw size={30} className="animate-spin" style={{ margin: '0 auto 12px', color: '#ff3366' }} />
-          <p style={{ fontSize: '0.9rem' }}>Chargement de l'ensemble des données...</p>
-        </div>
-      ) : (
-        <>
-          {activeTab === 'couple' && (
-            <CoupleInfoEditor
-              initialCouple={siteData.couple}
-              onSave={handleSaveCouple}
-              isSaving={isSaving}
-            />
-          )}
-
-          {activeTab === 'words' && (
-            <SweetWordsEditor
-              initialWords={siteData.sweetWords}
-              onSave={handleSaveWords}
-              isSaving={isSaving}
-            />
-          )}
-
-          {activeTab === 'capsules' && (
-            <CapsulesEditor
-              initialCapsules={siteData.capsules}
-              onSave={handleSaveCapsules}
-              isSaving={isSaving}
-            />
-          )}
-
-          {activeTab === 'coupons' && (
-            <CouponsEditor
-              initialScratch={siteData.scratchSecret}
-              initialCoupons={siteData.coupons}
-              onSave={handleSaveCouponsAndScratch}
-              isSaving={isSaving}
-            />
-          )}
-
-          {activeTab === 'quiz' && (
-            <QuizEditor
-              questions={siteData.quiz?.questions || []}
-              onAddQuestion={handleAddQuestion}
-              onUpdateQuestion={handleUpdateQuestion}
-              onToggleQuestion={handleToggleQuestion}
-              onDeleteQuestion={handleDeleteQuestion}
-              isSaving={isSaving}
-            />
-          )}
-        </>
-      )}
+      {/* ── CONTENT ── */}
+      <div style={{ padding: '12px 14px 0' }}>
+        {isLoading ? (
+          <div style={{ textAlign: 'center', padding: '60px 0', color: '#8a6877' }}>
+            <RefreshCw size={28} className="animate-spin" style={{ margin: '0 auto 10px', color: '#ff3366' }} />
+            <p style={{ fontSize: '0.85rem' }}>Chargement des données...</p>
+          </div>
+        ) : (
+          <>
+            {activeTab === 'couple' && (
+              <CoupleInfoEditor initialCouple={siteData.couple} onSave={d => handleSaveSection('couple', d)} isSaving={isSaving} />
+            )}
+            {activeTab === 'words' && (
+              <SweetWordsEditor initialWords={siteData.sweetWords} onSave={d => handleSaveSection('sweetWords', d)} isSaving={isSaving} />
+            )}
+            {activeTab === 'capsules' && (
+              <CapsulesEditor initialCapsules={siteData.capsules} onSave={d => handleSaveSection('capsules', d)} isSaving={isSaving} />
+            )}
+            {activeTab === 'coupons' && (
+              <CouponsEditor initialScratch={siteData.scratchSecret} initialCoupons={siteData.coupons} onSave={handleSaveCouponsAndScratch} isSaving={isSaving} />
+            )}
+            {activeTab === 'quiz' && (
+              <QuizEditor
+                questions={siteData.quiz?.questions || []}
+                onAddQuestion={handleAddQuestion}
+                onUpdateQuestion={handleUpdateQuestion}
+                onToggleQuestion={handleToggleQuestion}
+                onDeleteQuestion={handleDeleteQuestion}
+                isSaving={isSaving}
+              />
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }
