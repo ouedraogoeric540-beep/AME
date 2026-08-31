@@ -1,0 +1,325 @@
+{
+  "couple": {
+    "partnerName": "Mon Amour",
+    "senderName": "SNACKA",
+    "relationTitle": "Notre Histoire",
+    "subtitle": "Un espace intime et dédié pour célébrer chaque instant passé à tes côtés.",
+    "startDate": "2022-11-28T00:50:00",
+    "welcomeBadge": "Espace Privé & Dédicacé"
+  },
+  "sweetWords": [
+    "Ton sourire illumine chacune de mes journées.",
+    "Tu es la plus belle rencontre de ma vie.",
+    "J'admire chaque jour ta douceur, ta force et ton intelligence.",
+    "Chaque seconde passée avec toi est un moment précieux.",
+    "Tu es mon repère, ma complice et ma plus belle aventure.",
+    "Le monde est infiniment plus beau et lumineux à tes côtés.",
+    "Je t'aimais hier, je t'aime aujourd'hui, et je t'aimerai encore plus demain."
+  ],
+  "capsules": [
+    {
+      "id": "bad-day",
+      "tag": "À lire quand...",
+      "title": "Tu passes une journée difficile",
+      "subtitle": "Un rappel de ta force et de mon soutien inconditionnel",
+      "category": "Réconfort",
+      "color": "from-amber-500 to-rose-500",
+      "accentColor": "#d97706",
+      "icon": "Sun",
+      "isWaxSealed": true,
+      "audioVibe": "Ambiance apaisante",
+      "letter": {
+        "date": "Pour les jours gris",
+        "salutation": "Mon amour,",
+        "paragraphs": [
+          "Si tu lis cette lettre aujourd'hui, c'est que la journée a été lourde ou épuisante. Prends une profonde inspiration et relâche la pression.",
+          "Je veux simplement te rappeler la femme extraordinaire, forte et lumineuse que tu es. Les moments difficiles ne durent jamais, mais la personne que tu es reste inestimable.",
+          "Accorde-toi le droit de souffler et de te reposer. Je suis à tes côtés à chaque instant, pour t'écouter, te soutenir et prendre soin de toi.",
+          "Ce soir, repose-toi l'esprit tranquille. Je t'aime profondément."
+        ],
+        "signature": "À tes côtés, pour toujours."
+      }
+    },
+    {
+      "id": "miss-me",
+      "tag": "À lire quand...",
+      "title": "La distance se fait sentir",
+      "subtitle": "Pour combler les kilomètres et rapprocher nos cœurs",
+      "category": "Douceur",
+      "color": "from-rose-500 to-purple-600",
+      "accentColor": "#be123c",
+      "icon": "Heart",
+      "isWaxSealed": true,
+      "audioVibe": "Mélodie intime",
+      "letter": {
+        "date": "Quand tu penses à nous",
+        "salutation": "Ma chérie,",
+        "paragraphs": [
+          "Si je te manque en ce moment précis, sache que tu es également dans chacune de mes pensées.",
+          "La distance physique n'a aucune emprise sur ce que nous partageons. Chaque souvenir, chaque rire et chaque regard restent gravés en moi.",
+          "Chaque heure qui passe nous rapproche de nos prochaines retrouvailles.",
+          "Hâte de te serrer à nouveau dans mes bras."
+        ],
+        "signature": "Toujours près de toi dans mon cœur."
+      }
+    },
+    {
+      "id": "why-love-you",
+      "tag": "Déclaration",
+      "title": "Ce qui te rend unique à mes yeux",
+      "subtitle": "Quelques raisons parmi tant d'autres",
+      "category": "Déclaration",
+      "color": "from-pink-500 to-rose-600",
+      "accentColor": "#e11d48",
+      "icon": "Sparkles",
+      "isWaxSealed": true,
+      "audioVibe": "Déclaration sincère",
+      "letter": {
+        "date": "Gravé dans le temps",
+        "salutation": "À la femme qui illumine ma vie,",
+        "paragraphs": [
+          "Si je devais résumer pourquoi tu es si précieuse pour moi, la liste serait infinie. Voici quelques traits qui me touchent profondément :",
+          "• Ton rire authentique qui transforme n'importe quel instant en moment de bonheur.\n• La sincérité et la bienveillance naturelle de ton regard.\n• Ta façon unique de voir le monde et de comprendre les choses.\n• Ton soutien précieux et ton écoute sans jugement.\n• La complicité naturelle qui nous unit sans qu'on ait besoin de parler.",
+          "Je t'aime pour ce que tu es, dans toute ta vérité et ta splendeur."
+        ],
+        "signature": "Avec tout mon amour."
+      }
+    },
+    {
+      "id": "our-future",
+      "tag": "Promesse",
+      "title": "Notre chemin et nos projets",
+      "subtitle": "Une vision claire et sereine de notre avenir ensemble",
+      "category": "Promesse",
+      "color": "from-indigo-500 to-pink-500",
+      "accentColor": "#4f46e5",
+      "icon": "Compass",
+      "isWaxSealed": true,
+      "audioVibe": "Promesse éternelle",
+      "letter": {
+        "date": "Vers l'avenir",
+        "salutation": "Mon bel avenir,",
+        "paragraphs": [
+          "Construire à tes côtés est l'une de mes plus belles certitudes. Nos projets, nos voyages et notre quotidien prennent tout leur sens ensemble.",
+          "Je te promets d'être un pilier dans les épreuves, un partenaire dans tes réussites, et celui avec qui tu pourras toujours rire et être pleinement toi-même.",
+          "Le chemin que nous traçons est magnifique, et le meilleur est devant nous."
+        ],
+        "signature": "Prêt pour chaque chapitre à tes côtés."
+      }
+    }
+  ],
+  "scratchSecret": {
+    "title": "Message Privilège",
+    "instruction": "Faites glisser votre doigt sur la surface pour révéler le message...",
+    "revealedMessage": "Un dîner d'exception dans le restaurant de ton choix, suivi d'un moment privilégié à deux.",
+    "rewardTitle": "Privilège Accordé",
+    "couponCode": "PRIVILEGE-2026"
+  },
+  "quiz": {
+    "title": "Le Questionnaire Complice",
+    "subtitle": "Quelques questions simples pour tester nos souvenirs partagés.",
+    "questions": [
+      {
+        "id": "q-001",
+        "question": "Où s'est déroulé notre tout premier rendez-vous ?",
+        "active": true,
+        "options": [
+          {
+            "id": "opt-001",
+            "text": "Dans un café chaleureux et intimiste",
+            "isCorrect": true,
+            "feedback": "Exactement, un moment inoubliable."
+          },
+          {
+            "id": "opt-002",
+            "text": "Au restaurant pour un dîner à deux",
+            "isCorrect": false,
+            "feedback": "Non, c'était dans un café !"
+          },
+          {
+            "id": "opt-003",
+            "text": "Lors d'une promenade en ville",
+            "isCorrect": false,
+            "feedback": "Ce n'était pas le tout premier rendez-vous."
+          },
+          {
+            "id": "opt-004",
+            "text": "Au cinéma",
+            "isCorrect": false,
+            "feedback": "Non, nous avions préféré discuter tranquillement."
+          }
+        ]
+      },
+      {
+        "id": "q-002",
+        "question": "Quelle a été ma première impression en te découvrant ?",
+        "active": true,
+        "options": [
+          {
+            "id": "opt-005",
+            "text": "Une élégance naturelle et un charme immédiat",
+            "isCorrect": true,
+            "feedback": "Absolument, j'ai été immédiatement captivé."
+          },
+          {
+            "id": "opt-006",
+            "text": "Une personne discrète et réservée",
+            "isCorrect": false,
+            "feedback": "Ton rayonnement a tout de suite fait la différence !"
+          },
+          {
+            "id": "opt-007",
+            "text": "Une grande curiosité mutuelle",
+            "isCorrect": false,
+            "feedback": "C'était surtout un coup de foudre immédiat."
+          },
+          {
+            "id": "opt-008",
+            "text": "Une conversation fluide dès la première minute",
+            "isCorrect": false,
+            "feedback": "C'est vrai, mais ton charme m'a surtout marqué."
+          }
+        ]
+      },
+      {
+        "id": "q-003",
+        "question": "Quel est notre rituel préféré lors d'une soirée à deux ?",
+        "active": true,
+        "options": [
+          {
+            "id": "opt-009",
+            "text": "Partager un bon repas et discuter calmement",
+            "isCorrect": true,
+            "feedback": "Les plaisirs simples restent les plus précieux."
+          },
+          {
+            "id": "opt-010",
+            "text": "Regarder un film en toute tranquillité",
+            "isCorrect": true,
+            "feedback": "Un grand classique que nous adorons."
+          },
+          {
+            "id": "opt-011",
+            "text": "Sortir se promener le soir",
+            "isCorrect": false,
+            "feedback": "Nous apprécions surtout nos moments de calme à la maison."
+          },
+          {
+            "id": "opt-012",
+            "text": "Préparer un plat ensemble en cuisine",
+            "isCorrect": false,
+            "feedback": "Aussi, mais nous privilégions la détente !"
+          }
+        ]
+      },
+      {
+        "id": "q-004",
+        "question": "Quelle qualité admire-je particulièrement chez toi ?",
+        "active": true,
+        "options": [
+          {
+            "id": "opt-013",
+            "text": "Ta générosité de cœur et ta bienveillance",
+            "isCorrect": true,
+            "feedback": "C'est ce qui fait ta beauté intérieure au quotidien."
+          },
+          {
+            "id": "opt-014",
+            "text": "Ta détermination dans tout ce que tu fais",
+            "isCorrect": true,
+            "feedback": "Une grande force qui m'inspire toujours."
+          },
+          {
+            "id": "opt-015",
+            "text": "Ton sens de l'humour et ta joie de vivre",
+            "isCorrect": true,
+            "feedback": "Ton rire est un bonheur constant."
+          },
+          {
+            "id": "opt-016",
+            "text": "Toutes ces qualités réunies",
+            "isCorrect": true,
+            "feedback": "La réponse parfaite : l'ensemble de ta personne."
+          }
+        ]
+      },
+      {
+        "id": "q-005",
+        "question": "Quelle est notre plus belle réussite en tant que couple ?",
+        "active": true,
+        "options": [
+          {
+            "id": "opt-017",
+            "text": "Notre écoute, notre respect mutuel et notre confiance",
+            "isCorrect": true,
+            "feedback": "Le socle solide de tout ce que nous construisons."
+          },
+          {
+            "id": "opt-018",
+            "text": "Les voyages et découvertes partagés",
+            "isCorrect": false,
+            "feedback": "De très beaux souvenirs, mais notre complicité passe avant tout."
+          },
+          {
+            "id": "opt-019",
+            "text": "Notre capacité à surmonter chaque obstacle",
+            "isCorrect": true,
+            "feedback": "Une véritable force commune."
+          },
+          {
+            "id": "opt-020",
+            "text": "Tous les moments simples du quotidien",
+            "isCorrect": true,
+            "feedback": "C'est là que réside le véritable bonheur."
+          }
+        ]
+      }
+    ],
+    "results": {
+      "perfect": {
+        "title": "Complicité Parfaite",
+        "badge": "Score d'affinité : 100%",
+        "message": "Une parfaite mémoire de notre parcours et une connexion intacte. Vos privilèges exclusifs sont à présent disponibles."
+      },
+      "good": {
+        "title": "Belle Complicité",
+        "badge": "Score d'affinité : Élevé",
+        "message": "Une excellente compréhension mutuelle et des souvenirs toujours aussi vivants. Vos privilèges sont débloqués."
+      }
+    }
+  },
+  "coupons": [
+    {
+      "id": "coupon-1",
+      "icon": "Sparkles",
+      "title": "Séance de Massage & Relaxation",
+      "description": "Trente minutes de détente complète avec huiles essentielles et musique douce.",
+      "tag": "Bien-être",
+      "color": "from-amber-400 to-rose-400"
+    },
+    {
+      "id": "coupon-2",
+      "icon": "Utensils",
+      "title": "Dîner Gastronomique à Deux",
+      "description": "Choix complet du restaurant et de la carte, pour une soirée gourmande et raffinée.",
+      "tag": "Gastronomie",
+      "color": "from-rose-400 to-pink-500"
+    },
+    {
+      "id": "coupon-3",
+      "icon": "Film",
+      "title": "Soirée Cinéma Privée",
+      "description": "Sélection libre du film de votre choix, accompagnée de douceurs et d'un confort absolu.",
+      "tag": "Détente",
+      "color": "from-purple-400 to-indigo-500"
+    },
+    {
+      "id": "coupon-4",
+      "icon": "Crown",
+      "title": "Privilège Libre : Choix Unique",
+      "description": "Utilisable à tout moment pour exaucer une envie particulière ou une escapade surprise.",
+      "tag": "Privilège",
+      "color": "from-pink-500 to-rose-600"
+    }
+  ]
+}

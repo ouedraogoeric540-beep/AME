@@ -138,7 +138,7 @@ export default function QuestionCard({
 
           return (
             <button
-              key={idx}
+              key={option.id || idx}
               onClick={(e) => handleSelectOption(option, e)}
               disabled={hasAnswered}
               style={{

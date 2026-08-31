@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import FloatingHearts from './components/FloatingHearts';
 import HeroSection from './components/HeroSection';
@@ -7,13 +7,35 @@ import CoupleQuiz from './components/CoupleQuiz/CoupleQuiz';
 import CouponsSection from './components/CouponsSection';
 import MobileNav from './components/MobileNav';
 import SweetWordModal from './components/SweetWordModal';
+import AdminLayout from './components/Admin/AdminLayout';
 import { loveConfig } from './data/loveData';
 
 export default function App() {
+  // Check if initial URL is /admin
+  const [isAdminRoute, setIsAdminRoute] = useState(() => {
+    return window.location.pathname.toLowerCase().startsWith('/admin');
+  });
+
   const [currentTab, setCurrentTab] = useState('home');
   const [kissesCount, setKissesCount] = useState(0);
   const [showSweetModal, setShowSweetModal] = useState(false);
   const [currentSweetWord, setCurrentSweetWord] = useState('');
+
+  // Handle browser URL popstate (Back/Forward buttons)
+  useEffect(() => {
+    const handleLocationChange = () => {
+      setIsAdminRoute(window.location.pathname.toLowerCase().startsWith('/admin'));
+    };
+
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
+
+  const handleBackToSite = () => {
+    window.history.pushState({}, '', '/');
+    setIsAdminRoute(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const handleSendKiss = () => {
     setKissesCount(prev => prev + 1);
@@ -35,6 +57,11 @@ export default function App() {
     setCurrentTab(tabId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // If on /admin, display the dedicated admin view
+  if (isAdminRoute) {
+    return <AdminLayout onBackToSite={handleBackToSite} />;
+  }
 
   return (
     <div className="app-wrapper">

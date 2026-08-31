@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { HelpCircle, Sparkles, ArrowRight, Play, HeartHandshake } from 'lucide-react';
+import { HelpCircle, Sparkles, ArrowRight, HeartHandshake } from 'lucide-react';
 import { loveConfig } from '../../data/loveData';
+import initialQuestions from '../../data/questions.json';
 import QuestionCard from './QuestionCard';
 import QuizResult from './QuizResult';
 
@@ -10,9 +11,10 @@ export default function CoupleQuiz({ onGoToCoupons }) {
   const [score, setScore] = useState(0);
 
   const quizData = loveConfig.quiz;
-  const questions = quizData.questions;
+  const activeQuestions = (initialQuestions || []).filter(q => q.active);
 
   const handleStart = () => {
+    if (activeQuestions.length === 0) return;
     setGameState('playing');
     setCurrentIdx(0);
     setScore(0);
@@ -25,7 +27,7 @@ export default function CoupleQuiz({ onGoToCoupons }) {
   };
 
   const handleNext = () => {
-    if (currentIdx < questions.length - 1) {
+    if (currentIdx < activeQuestions.length - 1) {
       setCurrentIdx(prev => prev + 1);
     } else {
       setGameState('result');
@@ -93,39 +95,52 @@ export default function CoupleQuiz({ onGoToCoupons }) {
             {quizData.subtitle}
           </p>
 
-          <button
-            onClick={handleStart}
-            className="btn-romantic"
-            style={{
-              padding: '14px 36px',
-              fontSize: '0.95rem',
-              width: '100%',
-              maxWidth: '280px',
-              letterSpacing: '0.3px'
-            }}
-          >
-            <span>Démarrer le questionnaire</span>
-            <ArrowRight size={18} />
-          </button>
+          {activeQuestions.length > 0 ? (
+            <button
+              onClick={handleStart}
+              className="btn-romantic"
+              style={{
+                padding: '14px 36px',
+                fontSize: '0.95rem',
+                width: '100%',
+                maxWidth: '280px',
+                letterSpacing: '0.3px'
+              }}
+            >
+              <span>Démarrer le questionnaire</span>
+              <ArrowRight size={18} />
+            </button>
+          ) : (
+            <div style={{
+              padding: '12px 16px',
+              borderRadius: '12px',
+              background: 'rgba(255, 241, 242, 0.8)',
+              border: '1px solid #fecdd3',
+              color: '#9f1239',
+              fontSize: '0.85rem'
+            }}>
+              Aucune question n'est active actuellement.
+            </div>
+          )}
         </div>
       )}
 
       {/* Playing State */}
-      {gameState === 'playing' && (
+      {gameState === 'playing' && activeQuestions.length > 0 && (
         <QuestionCard
-          questionData={questions[currentIdx]}
+          questionData={activeQuestions[currentIdx]}
           currentIdx={currentIdx}
-          totalQuestions={questions.length}
+          totalQuestions={activeQuestions.length}
           onAnswer={handleAnswer}
           onNext={handleNext}
         />
       )}
 
       {/* Result State */}
-      {gameState === 'result' && (
+      {gameState === 'result' && activeQuestions.length > 0 && (
         <QuizResult
           score={score}
-          totalQuestions={questions.length}
+          totalQuestions={activeQuestions.length}
           onRestart={handleRestart}
           onGoToCoupons={onGoToCoupons}
         />

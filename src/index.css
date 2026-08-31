@@ -346,6 +346,24 @@ html, body {
   animation: bounceSoft 3s ease-in-out infinite;
 }
 
+@keyframes fadeInAnimation {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeInAnimation 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 15px rgba(255, 51, 102, 0.2); }
+  50% { box-shadow: 0 0 30px rgba(255, 51, 102, 0.45); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
 /* Envelope 3D Style */
 .envelope-box {
   position: relative;
@@ -385,7 +403,7 @@ html, body {
   background: rgba(43, 27, 34, 0.6);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
