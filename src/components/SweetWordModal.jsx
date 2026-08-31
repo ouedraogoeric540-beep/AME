@@ -1,10 +1,9 @@
 import React from 'react';
-import { Sparkles, Heart, X } from 'lucide-react';
+import { Sparkles, Heart, X, RefreshCw } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function SweetWordModal({ word, onClose, onNewWord }) {
   const handleNextWord = () => {
-    // Mini confetti burst
     confetti({
       particleCount: 25,
       spread: 50,
@@ -18,7 +17,7 @@ export default function SweetWordModal({ word, onClose, onNewWord }) {
     <div className="modal-overlay" onClick={onClose}>
       <div 
         className="letter-sheet"
-        style={{ maxWidth: '420px', padding: '24px 20px', textAlign: 'center', position: 'relative' }}
+        style={{ maxWidth: '420px', padding: '26px 20px', textAlign: 'center', position: 'relative' }}
         onClick={(e) => e.stopPropagation()}
       >
         <button
@@ -38,27 +37,40 @@ export default function SweetWordModal({ word, onClose, onNewWord }) {
             cursor: 'pointer',
             color: '#6b505c'
           }}
+          aria-label="Fermer"
         >
           <X size={18} />
         </button>
 
-        <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '56px', height: '56px', borderRadius: '50%', background: 'linear-gradient(135deg, #ffe4e9, #ffd1dc)', margin: '0 auto 16px', boxShadow: '0 8px 20px rgba(255, 77, 121, 0.2)' }}>
-          <Heart size={28} color="#ff3366" fill="#ff3366" className="animate-heart-pulse" />
+        <div style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '52px',
+          height: '52px',
+          borderRadius: '16px',
+          background: 'linear-gradient(135deg, #ffe4e9, #ffd1dc)',
+          margin: '0 auto 16px',
+          boxShadow: '0 8px 20px rgba(255, 77, 121, 0.15)'
+        }}>
+          <Heart size={24} color="#ff3366" fill="#ff3366" className="animate-heart-pulse" />
         </div>
 
-        <span className="romantic-badge" style={{ marginBottom: '14px' }}>
-          <Sparkles size={13} color="#f59e0b" />
-          <span>Dose d'Amour Spontanée</span>
-        </span>
+        <div style={{ marginBottom: '14px' }}>
+          <span className="romantic-badge">
+            <Sparkles size={13} color="#d97706" />
+            <span>Pensée du Moment</span>
+          </span>
+        </div>
 
         <p style={{
           fontFamily: 'var(--font-serif)',
           fontSize: '1.45rem',
           fontStyle: 'italic',
           color: '#2b1b22',
-          lineHeight: '1.4',
+          lineHeight: '1.45',
           margin: '16px 0 24px',
-          padding: '0 8px'
+          padding: '0 10px'
         }}>
           « {word} »
         </p>
@@ -69,8 +81,8 @@ export default function SweetWordModal({ word, onClose, onNewWord }) {
             onClick={handleNextWord}
             style={{ padding: '10px 18px', fontSize: '0.88rem' }}
           >
-            <Sparkles size={15} />
-            <span>Un autre mot doux</span>
+            <RefreshCw size={14} />
+            <span>Autre pensée</span>
           </button>
           <button 
             className="btn-secondary"

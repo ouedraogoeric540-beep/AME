@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Sparkles, Send, Clock, Flame, Calendar, Award } from 'lucide-react';
+import { Heart, Sparkles, Clock, Calendar, ArrowRight, BookOpen, HelpCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { loveConfig } from '../data/loveData';
 
@@ -43,17 +43,15 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
     setKissAnimation(true);
     setTimeout(() => setKissAnimation(false), 1200);
 
-    // Realistic heart burst confetti
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (rect.left + rect.width / 2) / window.innerWidth;
     const y = (rect.top + rect.height / 2) / window.innerHeight;
 
     confetti({
-      particleCount: 35,
-      spread: 70,
+      particleCount: 30,
+      spread: 65,
       origin: { x, y },
-      colors: ['#ff3366', '#ff5e7e', '#ec4899', '#fbcfe8', '#f59e0b'],
-      shapes: ['circle']
+      colors: ['#ff3366', '#ff5e7e', '#ec4899', '#fbcfe8', '#f59e0b']
     });
 
     onSendKiss();
@@ -65,9 +63,9 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
       textAlign: 'center'
     }}>
       {/* Top Welcome Badge */}
-      <div style={{ marginBottom: '14px' }}>
-        <span className="romantic-badge animate-bounce-soft">
-          <Sparkles size={13} color="#f59e0b" />
+      <div style={{ marginBottom: '16px' }}>
+        <span className="romantic-badge">
+          <Sparkles size={13} color="#d97706" />
           <span>{loveConfig.welcomeBadge}</span>
         </span>
       </div>
@@ -75,7 +73,7 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
       {/* Main Romantic Heading */}
       <h2 style={{
         fontFamily: 'var(--font-serif)',
-        fontSize: '2.3rem',
+        fontSize: '2.4rem',
         fontWeight: 700,
         color: '#2b1b22',
         lineHeight: 1.15,
@@ -86,15 +84,15 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
           background: 'linear-gradient(135deg, #ff3366, #ec4899)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent'
-        }}>{loveConfig.partnerName}</span> ❤️
+        }}>{loveConfig.partnerName}</span>
       </h2>
 
       <p style={{
         fontSize: '0.95rem',
         color: '#6b505c',
-        maxWidth: '440px',
-        margin: '0 auto 22px',
-        lineHeight: 1.5,
+        maxWidth: '460px',
+        margin: '0 auto 24px',
+        lineHeight: 1.55,
         padding: '0 10px'
       }}>
         {loveConfig.subtitle}
@@ -102,25 +100,26 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
 
       {/* Live Relationship Counter Box */}
       <div className="glass-card" style={{
-        padding: '20px 16px',
+        padding: '22px 18px',
         marginBottom: '24px',
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.85), rgba(255, 245, 247, 0.75))',
-        border: '1px solid rgba(255, 200, 220, 0.7)',
-        position: 'relative',
-        overflow: 'hidden'
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 246, 248, 0.85))',
+        border: '1px solid rgba(254, 205, 219, 0.85)',
+        boxShadow: '0 14px 36px -10px rgba(244, 63, 94, 0.12)'
       }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          gap: '6px',
-          marginBottom: '14px',
+          gap: '8px',
+          marginBottom: '16px',
           color: '#be123c',
           fontSize: '0.85rem',
-          fontWeight: 700
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          letterSpacing: '0.8px'
         }}>
-          <Clock size={16} />
-          <span>Nous deux, c'est de l'amour depuis :</span>
+          <Clock size={15} strokeWidth={2.2} />
+          <span>Temps partagé à tes côtés</span>
         </div>
 
         {/* Counter Grid */}
@@ -134,17 +133,17 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
           {[
             { label: 'Jours', value: timeTogether.days, color: '#ff3366' },
             { label: 'Heures', value: timeTogether.hours, color: '#ec4899' },
-            { label: 'Minutes', value: timeTogether.minutes, color: '#f59e0b' },
+            { label: 'Minutes', value: timeTogether.minutes, color: '#d97706' },
             { label: 'Secondes', value: timeTogether.seconds, color: '#be123c' }
           ].map((item, idx) => (
             <div
               key={idx}
               style={{
-                background: 'rgba(255, 255, 255, 0.9)',
-                border: '1px solid rgba(254, 205, 219, 0.8)',
+                background: 'rgba(255, 255, 255, 0.95)',
+                border: '1px solid rgba(254, 205, 219, 0.85)',
                 borderRadius: '16px',
-                padding: '12px 6px',
-                boxShadow: '0 4px 14px rgba(244, 63, 94, 0.06)',
+                padding: '14px 6px',
+                boxShadow: '0 4px 14px rgba(244, 63, 94, 0.05)',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center',
@@ -153,7 +152,7 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
             >
               <span style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: '1.65rem',
+                fontSize: '1.75rem',
                 fontWeight: 700,
                 color: item.color,
                 lineHeight: 1
@@ -162,11 +161,11 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
               </span>
               <span style={{
                 fontSize: '0.68rem',
-                fontWeight: 600,
-                color: '#6b505c',
+                fontWeight: 700,
+                color: '#8a6877',
                 textTransform: 'uppercase',
-                letterSpacing: '0.5px',
-                marginTop: '4px'
+                letterSpacing: '0.6px',
+                marginTop: '6px'
               }}>
                 {item.label}
               </span>
@@ -174,18 +173,13 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
           ))}
         </div>
 
-        {/* Love streak milestone */}
         <div style={{
           marginTop: '14px',
-          fontSize: '0.78rem',
-          color: '#9d7888',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          gap: '6px'
+          fontSize: '0.8rem',
+          color: '#8a6877',
+          fontWeight: 500
         }}>
-          <Flame size={14} color="#ff3366" />
-          <span>Déjà <strong>{timeTogether.totalDays} jours</strong> de bonheur partagé !</span>
+          Déjà <strong style={{ color: '#be123c', fontWeight: 700 }}>{timeTogether.totalDays} jours</strong> de bonheur partagé
         </div>
       </div>
 
@@ -201,19 +195,20 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
           className="btn-romantic"
           style={{
             padding: '14px 28px',
-            fontSize: '1rem',
+            fontSize: '0.95rem',
             width: '100%',
-            maxWidth: '320px'
+            maxWidth: '320px',
+            letterSpacing: '0.3px'
           }}
         >
-          <Heart size={20} fill="#ffffff" className={kissAnimation ? "animate-heart-pulse" : ""} />
-          <span>Envoyer un bisou d'amour 💕</span>
+          <Heart size={18} fill="#ffffff" stroke="none" className={kissAnimation ? "animate-heart-pulse" : ""} />
+          <span>Envoyer une attention</span>
         </button>
 
         {/* Quick Tabs Jump on Mobile */}
         <div style={{
           display: 'flex',
-          gap: '8px',
+          gap: '10px',
           width: '100%',
           maxWidth: '360px',
           justifyContent: 'center',
@@ -222,16 +217,18 @@ export default function HeroSection({ onNavigate, onSendKiss }) {
           <button
             onClick={() => onNavigate('letters')}
             className="btn-secondary"
-            style={{ flex: 1, padding: '10px 12px', fontSize: '0.82rem' }}
+            style={{ flex: 1, padding: '11px 14px', fontSize: '0.84rem', gap: '6px' }}
           >
-            💌 Ouvrir les Lettres
+            <BookOpen size={15} />
+            <span>Les Lettres</span>
           </button>
           <button
             onClick={() => onNavigate('quiz')}
             className="btn-secondary"
-            style={{ flex: 1, padding: '10px 12px', fontSize: '0.82rem' }}
+            style={{ flex: 1, padding: '11px 14px', fontSize: '0.84rem', gap: '6px' }}
           >
-            🎯 Faire le Quiz
+            <HelpCircle size={15} />
+            <span>Le Questionnaire</span>
           </button>
         </div>
       </div>

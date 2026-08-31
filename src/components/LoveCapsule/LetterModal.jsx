@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Heart, Copy, Check, Sparkles, Send } from 'lucide-react';
+import { X, Heart, Copy, Check, Sparkles, BookOpen } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export default function LetterModal({ capsule, onClose, onSendLoveReaction }) {
@@ -23,8 +23,8 @@ export default function LetterModal({ capsule, onClose, onSendLoveReaction }) {
     const y = (rect.top + rect.height / 2) / window.innerHeight;
 
     confetti({
-      particleCount: 40,
-      spread: 70,
+      particleCount: 30,
+      spread: 60,
       origin: { x, y },
       colors: ['#ff3366', '#ec4899', '#f43f5e', '#ffd1dc']
     });
@@ -63,11 +63,11 @@ export default function LetterModal({ capsule, onClose, onSendLoveReaction }) {
           borderBottom: '1px dashed #fecdd3'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '1.2rem' }}>💌</span>
+            <BookOpen size={16} color="#be123c" />
             <span style={{
-              fontSize: '0.8rem',
+              fontSize: '0.82rem',
               fontWeight: 600,
-              color: '#9d7888',
+              color: '#8a6877',
               fontStyle: 'italic'
             }}>
               {letter.date}
@@ -108,7 +108,7 @@ export default function LetterModal({ capsule, onClose, onSendLoveReaction }) {
             fontWeight: 700,
             color: '#be123c',
             marginBottom: '14px',
-            lineHeight: 1.2
+            lineHeight: 1.25
           }}>
             {letter.salutation}
           </h3>
@@ -117,7 +117,7 @@ export default function LetterModal({ capsule, onClose, onSendLoveReaction }) {
           <div style={{
             fontFamily: 'var(--font-serif)',
             fontSize: '1.15rem',
-            lineHeight: '1.6',
+            lineHeight: '1.65',
             color: '#2b1b22',
             display: 'flex',
             flexDirection: 'column',
@@ -155,10 +155,10 @@ export default function LetterModal({ capsule, onClose, onSendLoveReaction }) {
           <button
             onClick={handleCopy}
             className="btn-secondary"
-            style={{ padding: '8px 14px', fontSize: '0.78rem', gap: '5px' }}
+            style={{ padding: '8px 14px', fontSize: '0.78rem', gap: '6px' }}
           >
             {copied ? <Check size={14} color="#16a34a" /> : <Copy size={14} />}
-            <span>{copied ? 'Copié !' : 'Garder ce mot'}</span>
+            <span>{copied ? 'Copié' : 'Copier le texte'}</span>
           </button>
 
           <button
@@ -167,7 +167,7 @@ export default function LetterModal({ capsule, onClose, onSendLoveReaction }) {
             style={{ padding: '8px 18px', fontSize: '0.85rem', gap: '6px' }}
           >
             <Heart size={16} fill={reacted ? '#ffffff' : 'none'} className={reacted ? "animate-heart-pulse" : ""} />
-            <span>{reacted ? 'Moi aussi je t\'aime ! ❤️' : 'Répondre avec amour'}</span>
+            <span>{reacted ? 'Attention envoyée' : 'Répondre avec amour'}</span>
           </button>
         </div>
       </div>

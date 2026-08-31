@@ -1,240 +1,237 @@
 // =========================================================================
-// 💖 FICHIER DE PERSONNALISATION - NOTRE ESPACE AMOUREUX 💖
-// Modifie facilement les textes, dates, questions et lettres ci-dessous !
+// CONFIGURATION DE VOTRE ESPACE AMOUREUX
+// Modifiez facilement les prénoms, dates, lettres et questions ci-dessous.
 // =========================================================================
 
 export const loveConfig = {
   // --- 1. Informations du couple ---
-  partnerName: "Mon Cœur",        // Le prénom ou surnom de ta petite amie
-  senderName: "Ton Amoureux",     // Ton prénom ou surnom
-  relationTitle: "Notre Histoire d'Amour ✨",
-  subtitle: "Un petit coin secret créé rien que pour toi, avec tout mon amour.",
+  partnerName: "Mon Amour",       // Prénom ou surnom de votre petite amie
+  senderName: "Ton Amoureux",     // Votre prénom ou surnom
+  relationTitle: "Notre Histoire",
+  subtitle: "Un espace intime et dédié pour célébrer chaque instant passé à tes côtés.",
   
   // Date de début de relation (Format: AAAA-MM-JJ ou AAAA-MM-JJTHH:MM:SS)
-  // Ajuste cette date pour que le compteur soit 100% exact !
   startDate: "2023-06-14T20:00:00", 
   
-  // Petit message d'accueil
-  welcomeBadge: "Spécialement pour la femme de ma vie ❤️",
+  welcomeBadge: "Espace Privé & Dédicacé",
   
-  // --- 2. Compliments aléatoires (Bouton "Dose d'Amour") ---
+  // --- 2. Pensées & Mots Doux (Bouton "Pensée du Jour") ---
   sweetWords: [
-    "Ton sourire illumine littéralement toutes mes journées.",
-    "Tu es la plus belle chose qui me soit arrivée dans cette vie.",
-    "J'adore la façon dont tes yeux pétillent quand tu es passionnée.",
-    "Chaque seconde passée avec toi est mon moment préféré.",
-    "Tu es mon refuge, mon rire et ma plus belle aventure.",
-    "Même le plus beau coucher de soleil est fade à côté de ta beauté.",
-    "Tu as ce super-pouvoir de rendre tout magique autour de toi.",
+    "Ton sourire illumine chacune de mes journées.",
+    "Tu es la plus belle rencontre de ma vie.",
+    "J'admire chaque jour ta douceur, ta force et ton intelligence.",
+    "Chaque seconde passée avec toi est un moment précieux.",
+    "Tu es mon repère, ma complice et ma plus belle aventure.",
+    "Le monde est infiniment plus beau et lumineux à tes côtés.",
     "Je t'aimais hier, je t'aime aujourd'hui, et je t'aimerai encore plus demain."
   ],
 
-  // --- 3. La Boîte à Lettres & Messages Secrets (Love Capsule) ---
+  // --- 3. La Boîte à Lettres (Capsules Temporelles) ---
   capsules: [
     {
       id: "bad-day",
-      tag: "Ouvre quand...",
-      title: "Tu passes une mauvaise journée",
-      subtitle: "Un câlin virtuel et un rappel de ta force 🌧️➡️🌈",
+      tag: "À lire quand...",
+      title: "Tu passes une journée difficile",
+      subtitle: "Un rappel de ta force et de mon soutien inconditionnel",
       category: "Réconfort",
       color: "from-amber-500 to-rose-500",
-      accentColor: "#f59e0b",
+      accentColor: "#d97706",
       icon: "Sun",
       isWaxSealed: true,
-      audioVibe: "Pluie douce & Piano",
+      audioVibe: "Ambiance apaisante",
       letter: {
         date: "Pour les jours gris",
-        salutation: "Ma princesse adorée,",
+        salutation: "Mon amour,",
         paragraphs: [
-          "Si tu lis cette lettre, c'est que la journée a été lourde, fatigante ou que les choses ne se sont pas passées comme tu le voulais. Respire un grand coup, relâche tes épaules.",
-          "Je veux juste te rappeler à quel point tu es une personne forte, incroyable et lumineuse. Même les tempêtes les plus sombres finissent toujours par laisser place au soleil.",
-          "Tu as le droit d'être fatiguée, tu as le droit de faire une pause. Ferme les yeux et imagine-toi dans mes bras : je te serre fort et rien ne peut t'atteindre.",
-          "Tout va bien se passer, mon amour. Je crois en toi, je suis là pour toi, quoi qu'il arrive. Ce soir, détends-toi, je m'occupe de tout."
+          "Si tu lis cette lettre aujourd'hui, c'est que la journée a été lourde ou épuisante. Prends une profonde inspiration et relâche la pression.",
+          "Je veux simplement te rappeler la femme extraordinaire, forte et lumineuse que tu es. Les moments difficiles ne durent jamais, mais la personne que tu es reste inestimable.",
+          "Accorde-toi le droit de souffler et de te reposer. Je suis à tes côtés à chaque instant, pour t'écouter, te soutenir et prendre soin de toi.",
+          "Ce soir, repose-toi l'esprit tranquille. Je t'aime profondément."
         ],
-        signature: "Ton plus grand soutien, pour toujours ❤️"
+        signature: "À tes côtés, pour toujours."
       }
     },
     {
       id: "miss-me",
-      tag: "Ouvre quand...",
-      title: "Je te manque terriblement",
-      subtitle: "Pour combler la distance entre nous deux 💌",
+      tag: "À lire quand...",
+      title: "La distance se fait sentir",
+      subtitle: "Pour combler les kilomètres et rapprocher nos cœurs",
       category: "Douceur",
       color: "from-rose-500 to-purple-600",
-      accentColor: "#e11d48",
-      icon: "HeartHandshake",
+      accentColor: "#be123c",
+      icon: "Heart",
       isWaxSealed: true,
-      audioVibe: "Bande-son romantique",
+      audioVibe: "Mélodie intime",
       letter: {
-        date: "Quand la distance se fait sentir",
-        salutation: "Mon amour,",
+        date: "Quand tu penses à nous",
+        salutation: "Ma chérie,",
         paragraphs: [
-          "Si je te manque en ce moment précis, sache une chose : je suis en train de penser à toi aussi. C'est presque automatique, tu occupes 99% de mes pensées chaque jour.",
-          "Regarde notre ciel : c'est le même qui est au-dessus de nous deux. La distance physique n'a aucun pouvoir contre ce qu'on ressent l'un pour l'autre.",
-          "Rappelle-toi nos fous rires, la chaleur de nos mains serrées, et l'odeur de ton parfum qui me rend fou. Chaque minute qui passe nous rapproche du moment où je pourrai enfin t'embrasser à nouveau.",
-          "Envoie-moi un message dès que tu as fini de lire ceci, je t'attends !"
+          "Si je te manque en ce moment précis, sache que tu es également dans chacune de mes pensées.",
+          "La distance physique n'a aucune emprise sur ce que nous partageons. Chaque souvenir, chaque rire et chaque regard restent gravés en moi.",
+          "Chaque heure qui passe nous rapproche de nos prochaines retrouvailles.",
+          "Hâte de te serrer à nouveau dans mes bras."
         ],
-        signature: "Celui qui ne cesse de compter les heures avant de te revoir 💕"
+        signature: "Toujours près de toi dans mon cœur."
       }
     },
     {
       id: "why-love-you",
-      tag: "Spécial Déclaration",
-      title: "10 raisons pour lesquelles je t'aime",
-      subtitle: "Même s'il y en a en réalité plus d'un million 💖",
+      tag: "Déclaration",
+      title: "Ce qui te rend unique à mes yeux",
+      subtitle: "Quelques raisons parmi tant d'autres",
       category: "Déclaration",
       color: "from-pink-500 to-rose-600",
-      accentColor: "#ec4899",
+      accentColor: "#e11d48",
       icon: "Sparkles",
       isWaxSealed: true,
-      audioVibe: "Mélodie magique",
+      audioVibe: "Déclaration sincère",
       letter: {
-        date: "Gravé dans mon cœur",
-        salutation: "À la fille qui a volé mon cœur,",
+        date: "Gravé dans le temps",
+        salutation: "À la femme qui illumine ma vie,",
         paragraphs: [
-          "Si on me demandait pourquoi je t'aime, je pourrais en parler pendant des jours entiers. Voici 10 petites pépites qui me rendent fou de toi au quotidien :",
-          "1. Ton rire contagieux qui me redonne instantanément le sourire.\n2. La manière adorable dont tu t'endors sur mon épaule.\n3. Ta bienveillance et la pureté de ton cœur avec les gens que tu aimes.\n4. Tes petites mimiques mignonnes quand tu es concentrée.\n5. Ta façon de me regarder qui me donne l'impression d'être invincible.\n6. Nos délires secrets que personne d'autre ne peut comprendre.\n7. Ton soutien sans faille dans tout ce que j'entreprends.\n8. La beauté naturelle de ton visage le matin au réveil.\n9. Tes câlins qui ont le pouvoir d'effacer tous mes soucis.\n10. Le simple fait que le monde est mille fois plus beau quand tu es dedans.",
-          "Et la vérité, c'est que je t'aime surtout pour tout ce que tu es, sans aucun filtre."
+          "Si je devais résumer pourquoi tu es si précieuse pour moi, la liste serait infinie. Voici quelques traits qui me touchent profondément :",
+          "• Ton rire authentique qui transforme n'importe quel instant en moment de bonheur.\n• La sincérité et la bienveillance naturelle de ton regard.\n• Ta façon unique de voir le monde et de comprendre les choses.\n• Ton soutien précieux et ton écoute sans jugement.\n• La complicité naturelle qui nous unit sans qu'on ait besoin de parler.",
+          "Je t'aime pour ce que tu es, dans toute ta vérité et ta splendeur."
         ],
-        signature: "Amoureux de toi à l'infini ✨"
+        signature: "Avec tout mon amour."
       }
     },
     {
       id: "our-future",
-      tag: "Ouvre quand...",
-      title: "Tu doutes ou penses à notre avenir",
-      subtitle: "Une promesse sincère gravée dans le marbre 💍",
+      tag: "Promesse",
+      title: "Notre chemin et nos projets",
+      subtitle: "Une vision claire et sereine de notre avenir ensemble",
       category: "Promesse",
       color: "from-indigo-500 to-pink-500",
-      accentColor: "#6366f1",
+      accentColor: "#4f46e5",
       icon: "Compass",
       isWaxSealed: true,
       audioVibe: "Promesse éternelle",
       letter: {
-        date: "Pour toujours et au-delà",
-        salutation: "Mon futur et mon présent,",
+        date: "Vers l'avenir",
+        salutation: "Mon bel avenir,",
         paragraphs: [
-          "Le futur peut parfois sembler flou ou incertain, mais s'il y a bien une certitude absolue dans ma vie, c'est que je veux le construire à tes côtés.",
-          "J'imagine déjà nos prochains voyages, nos futures bêtises, notre petit cocon décoré ensemble, et tous ces dimanches matins tranquilles où nous prendrons le petit-déjeuner au lit.",
-          "Je te promets d'être ton rocher quand tu as besoin d'appui, ton clown quand tu as besoin de rire, et ton plus grand allié dans toutes tes ambitions.",
-          "Notre histoire ne fait que commencer, et le meilleur reste encore à écrire."
+          "Construire à tes côtés est l'une de mes plus belles certitudes. Nos projets, nos voyages et notre quotidien prennent tout leur sens ensemble.",
+          "Je te promets d'être un pilier dans les épreuves, un partenaire dans tes réussites, et celui avec qui tu pourras toujours rire et être pleinement toi-même.",
+          "Le chemin que nous traçons est magnifique, et le meilleur est devant nous."
         ],
-        signature: "Prêt pour toute une vie avec toi 🏡💫"
+        signature: "Prêt pour chaque chapitre à tes côtés."
       }
     }
   ],
 
-  // --- 4. Carte à Gratter Secrète ---
+  // --- 4. Carte Mystère à Révéler ---
   scratchSecret: {
-    title: "✨ Carte Mystère à Gratter ✨",
-    instruction: "Gratte avec ton doigt pour dévoiler le mot secret...",
-    revealedMessage: "Félicitations mon amour ! Tu as gagné un baiser passionné de 5 minutes + un massage de la nuque immédiat dès qu'on se voit ❤️🥰",
-    rewardTitle: "Privilège Spécial Amour",
-    couponCode: "LOVE-FOREVER-2026"
+    title: "Message Privilège",
+    instruction: "Faites glisser votre doigt sur la surface pour révéler le message...",
+    revealedMessage: "Un dîner d'exception dans le restaurant de ton choix, suivi d'un moment privilégié à deux.",
+    rewardTitle: "Privilège Accordé",
+    couponCode: "PRIVILEGE-2026"
   },
 
-  // --- 5. Le Mini-Quiz Complice (Tu te rappelles ?) ---
+  // --- 5. Le Questionnaire Complice (Simple à Personnaliser) ---
+  // Vous pouvez modifier les questions, les options et indiquer laquelle est correcte (isCorrect: true).
   quiz: {
-    title: "Le Grand Quiz de Notre Couple 💘",
-    subtitle: "Es-tu sûre de te souvenir de tous nos petits secrets ?",
+    title: "Le Questionnaire Complice",
+    subtitle: "Quelques questions simples pour tester nos souvenirs partagés.",
     questions: [
       {
         id: 1,
-        question: "Te souviens-tu de l'endroit exact de notre tout premier rendez-vous ?",
+        question: "Où s'est déroulé notre tout premier rendez-vous ?",
         options: [
-          { text: "Dans un petit café cosy et chaleureux ☕", isCorrect: true, comment: "Bravo ! L'odeur du café et la magie dans tes yeux ce jour-là !" },
-          { text: "Au cinéma devant un film qu'on n'a même pas regardé 🎬", isCorrect: false, comment: "Pas mal, mais c'était bien dans un café cosy !" },
-          { text: "En train de se promener sous la pluie comme dans un film ☔", isCorrect: false, comment: "Très poétique mais ce n'était pas le tout premier !" },
-          { text: "Dans un resto chic avec des chandelles 🕯️", isCorrect: false, comment: "Un grand classique, mais nous c'était bien plus intime !" }
+          { text: "Dans un café chaleureux et intimiste", isCorrect: true, feedback: "Exactement, un moment inoubliable." },
+          { text: "Au restaurant pour un dîner à deux", isCorrect: false, feedback: "Non, c'était dans un café !" },
+          { text: "Lors d'une promenade en ville", isCorrect: false, feedback: "Ce n'était pas le tout premier rendez-vous." },
+          { text: "Au cinéma", isCorrect: false, feedback: "Non, nous avions préféré discuter tranquillement." }
         ]
       },
       {
         id: 2,
-        question: "Quelle a été ma toute première pensée en te voyant pour la première fois ?",
+        question: "Quelle a été ma première impression en te découvrant ?",
         options: [
-          { text: "« Waouh... Elle est encore plus sublime en vrai ! » ✨", isCorrect: true, comment: "Exactement ! J'ai eu le souffle coupé dès le premier regard." },
-          { text: "« J'espère qu'elle aime les blagues nulles ! » 😂", isCorrect: false, comment: "Aussi, mais j'étais surtout ébloui par ta beauté !" },
-          { text: "« Est-ce que j'ai l'air assez cool ? » 😎", isCorrect: false, comment: "J'étais stressé, mais surtout subjugué par toi !" },
-          { text: "« J'espère qu'elle ne remarquera pas que je rougis » 🙈", isCorrect: false, comment: "Vrai aussi, mais ta beauté m'a hypnotisé !" }
+          { text: "Une élégance naturelle et un charme immédiat", isCorrect: true, feedback: "Absolument, j'ai été immédiatement captivé." },
+          { text: "Une personne discrète et réservée", isCorrect: false, feedback: "Ton rayonnement a tout de suite fait la différence !" },
+          { text: "Une grande curiosité mutuelle", isCorrect: false, feedback: "C'était surtout un coup de foudre immédiat." },
+          { text: "Une conversation fluide dès la première minute", isCorrect: false, feedback: "C'est vrai, mais ton charme m'a surtout marqué." }
         ]
       },
       {
         id: 3,
-        question: "Qui est officiellement le plus gros demandeur de câlins dans le couple ?",
+        question: "Quel est notre rituel préféré lors d'une soirée à deux ?",
         options: [
-          { text: "Toi (même si tu fais semblant du contraire) 🐱", isCorrect: true, comment: "Ahah tu es une vraie boîte à câlins et j'adore ça !" },
-          { text: "Moi à 1000% dès que je te vois 🥰", isCorrect: true, comment: "Totalement vrai ! Impossible de résister à l'envie de te serrer fort !" },
-          { text: "Ex æquo, on est deux pots de colle inséparables 🍯", isCorrect: true, comment: "La réponse parfaite : on ne peut pas vivre l'un sans l'autre !" },
-          { text: "Personne, on est très indépendants... (Faux !) 🤥", isCorrect: false, comment: "Mensonge total ! On est collés H24 !" }
+          { text: "Partager un bon repas et discuter calmement", isCorrect: true, feedback: "Les plaisirs simples restent les plus précieux." },
+          { text: "Regarder un film en toute tranquillité", isCorrect: true, feedback: "Un grand classique que nous adorons." },
+          { text: "Sortir se promener le soir", isCorrect: false, feedback: "Nous apprécions surtout nos moments de calme à la maison." },
+          { text: "Préparer un plat ensemble en cuisine", isCorrect: false, feedback: "Aussi, mais nous privilégions la détente !" }
         ]
       },
       {
         id: 4,
-        question: "Quelle est notre activité préférée par excellence lors d'une soirée à deux ?",
+        question: "Quelle qualité admire-je particulièrement chez toi ?",
         options: [
-          { text: "Commander de la bonne bouffe et regarder notre série sous le plaid 🍕🛋️", isCorrect: true, comment: "Le bonheur absolu en toute simplicité avec toi !" },
-          { text: "Parler pendant des heures de tout et de rien au lit 🌙", isCorrect: true, comment: "Nos conversations nocturnes sont les plus précieuses !" },
-          { text: "Faire semblant de choisir un film pendant 45 minutes pour finalement s'endormir 😴", isCorrect: true, comment: "Ahah tellement nous deux ! Tu t'endors toujours avant le générique." },
-          { text: "Faire une compétition de cuisine gastronomique 👩‍🍳", isCorrect: false, comment: "On préfère largement le plaid et les sushis !" }
+          { text: "Ta générosité de cœur et ta bienveillance", isCorrect: true, feedback: "C'est ce qui fait ta beauté intérieure au quotidien." },
+          { text: "Ta détermination dans tout ce que tu fais", isCorrect: true, feedback: "Une grande force qui m'inspire toujours." },
+          { text: "Ton sens de l'humour et ta joie de vivre", isCorrect: true, feedback: "Ton rire est un bonheur constant." },
+          { text: "Toutes ces qualités réunies", isCorrect: true, feedback: "La réponse parfaite : l'ensemble de ta personne." }
         ]
       },
       {
         id: 5,
-        question: "Si je devais choisir une seule chose à garder pour toute la vie, ce serait :",
+        question: "Quelle est notre plus belle réussite en tant que couple ?",
         options: [
-          { text: "Toi, ta main dans la mienne et ton sourire pour toujours ❤️", isCorrect: true, comment: "C'est la seule et unique bonne réponse. Je te choisis toi, chaque jour." },
-          { text: "Une réserve infinie de chocolat 🍫", isCorrect: false, comment: "Tentant, mais tu es infiniment plus douce que le chocolat !" },
-          { text: "Gagner à l'Euromillions 💰", isCorrect: false, comment: "L'argent ne vaut rien sans toi pour le partager !" },
-          { text: "Une téléportation pour éviter le trafic 🚗", isCorrect: false, comment: "Pratique, mais rien n'égale ton sourire !" }
+          { text: "Notre écoute, notre respect mutuel et notre confiance", isCorrect: true, feedback: "Le socle solide de tout ce que nous construisons." },
+          { text: "Les voyages et découvertes partagés", isCorrect: false, feedback: "De très beaux souvenirs, mais notre complicité passe avant tout." },
+          { text: "Notre capacité à surmonter chaque obstacle", isCorrect: true, feedback: "Une véritable force commune." },
+          { text: "Tous les moments simples du quotidien", isCorrect: true, feedback: "C'est là que réside le véritable bonheur." }
         ]
       }
     ],
     results: {
       perfect: {
-        title: "Âmes Sœurs Certifiées ! 🏆👑",
-        badge: "Score Parfait : 100%",
-        message: "Tu te souviens de tout ! Tu es officiellement la meilleure petite amie de la Terre. Pour te récompenser, voici tes Chèques d'Amour Spéciaux :"
+        title: "Complicité Parfaite",
+        badge: "Score d'affinité : 100%",
+        message: "Une parfaite mémoire de notre parcours et une connexion intacte. Vos privilèges exclusifs sont à présent disponibles."
       },
       good: {
-        title: "Couple de Rêve ! 💕✨",
-        badge: "Score d'Amour : Élevé",
-        message: "Presque un sans-faute ! De toute façon, même quand tu te trompes, tu es adorable. Voici tes récompenses bien méritées :"
+        title: "Belle Complicité",
+        badge: "Score d'affinité : Élevé",
+        message: "Une excellente compréhension mutuelle et des souvenirs toujours aussi vivants. Vos privilèges sont débloqués."
       }
     }
   },
 
-  // --- 6. Bons d'Amour Débloquables (Chéquier Cadeau) ---
+  // --- 6. Privilèges Débloquables (Chéquier Exclusif) ---
   coupons: [
     {
       id: "coupon-1",
       icon: "Sparkles",
-      title: "Bon pour un Massage Relaxant",
-      description: "Massage du dos, des épaules ou des pieds de 30 minutes avec musique douce et huiles parfumées.",
-      tag: "Détente Ultime",
+      title: "Séance de Massage & Relaxation",
+      description: "Trente minutes de détente complète avec huiles essentielles et musique douce.",
+      tag: "Bien-être",
       color: "from-amber-400 to-rose-400"
     },
     {
       id: "coupon-2",
       icon: "Utensils",
-      title: "Bon pour un Dîner de Reine",
-      description: "Tu choisis le restaurant ou le repas, je m'occupe de payer / cuisiner et de faire la vaisselle !",
-      tag: "Gourmandise",
+      title: "Dîner Gastronomique à Deux",
+      description: "Choix complet du restaurant et de la carte, pour une soirée gourmande et raffinée.",
+      tag: "Gastronomie",
       color: "from-rose-400 to-pink-500"
     },
     {
       id: "coupon-3",
       icon: "Film",
-      title: "Pass Soirée Film & Câlins",
-      description: "Tu as le contrôle total de la télécommande et je n'ai pas le droit de me plaindre du film romantique !",
-      tag: "Soirée Cosy",
+      title: "Soirée Cinéma Privée",
+      description: "Sélection libre du film de votre choix, accompagnée de douceurs et d'un confort absolu.",
+      tag: "Détente",
       color: "from-purple-400 to-indigo-500"
     },
     {
       id: "coupon-4",
       icon: "Crown",
-      title: "Joker Ultime : Vœu Exaucé",
-      description: "Utilisable à tout moment pour ce que tu veux : un caprice, un pardon immédiat ou une sortie surprise.",
-      tag: "Illimité & Éternel",
+      title: "Privilège Libre : Choix Unique",
+      description: "Utilisable à tout moment pour exaucer une envie particulière ou une escapade surprise.",
+      tag: "Privilège",
       color: "from-pink-500 to-rose-600"
     }
   ]

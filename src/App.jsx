@@ -100,7 +100,7 @@ export default function App() {
             « Aimer, ce n'est pas se regarder l'un l'autre, c'est regarder ensemble dans la même direction. »
           </p>
           <p style={{ fontWeight: 600 }}>
-            Fait avec tout mon amour pour toi ❤️
+            Créé spécialement pour toi
           </p>
         </footer>
       </main>

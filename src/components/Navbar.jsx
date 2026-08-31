@@ -10,11 +10,11 @@ export default function Navbar({ onOpenDose, kissesCount }) {
       zIndex: 50,
       width: '100%',
       padding: 'calc(10px + var(--safe-top)) 16px 10px',
-      background: 'rgba(255, 255, 255, 0.75)',
+      background: 'rgba(255, 255, 255, 0.85)',
       backdropFilter: 'blur(20px) saturate(160%)',
       WebkitBackdropFilter: 'blur(20px) saturate(160%)',
-      borderBottom: '1px solid rgba(255, 220, 235, 0.6)',
-      boxShadow: '0 4px 20px rgba(244, 63, 94, 0.05)'
+      borderBottom: '1px solid rgba(254, 205, 219, 0.6)',
+      boxShadow: '0 4px 20px rgba(244, 63, 94, 0.04)'
     }}>
       <div style={{
         maxWidth: '720px',
@@ -25,7 +25,7 @@ export default function Navbar({ onOpenDose, kissesCount }) {
         gap: '8px'
       }}>
         {/* Logo / Brand */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div style={{
             width: '36px',
             height: '36px',
@@ -34,23 +34,24 @@ export default function Navbar({ onOpenDose, kissesCount }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 12px rgba(244, 63, 94, 0.3)'
+            boxShadow: '0 4px 12px rgba(244, 63, 94, 0.25)',
+            color: '#ffffff'
           }}>
-            <Heart size={18} color="#ffffff" fill="#ffffff" className="animate-heart-pulse" />
+            <Heart size={18} fill="#ffffff" stroke="none" className="animate-heart-pulse" />
           </div>
           <div>
             <h1 style={{
               fontFamily: 'var(--font-serif)',
-              fontSize: '1.15rem',
+              fontSize: '1.2rem',
               fontWeight: 700,
               letterSpacing: '-0.2px',
               color: '#2b1b22',
               lineHeight: 1.1
             }}>
-              Love Capsule
+              Espace Intime
             </h1>
-            <span style={{ fontSize: '0.7rem', color: '#9d7888', fontWeight: 500 }}>
-              {kissesCount > 0 ? `${kissesCount} bisous envoyés 💕` : "Pour mon amour"}
+            <span style={{ fontSize: '0.72rem', color: '#8a6877', fontWeight: 500 }}>
+              {kissesCount > 0 ? `${kissesCount} attentions envoyées` : "Dédié à mon amour"}
             </span>
           </div>
         </div>
@@ -63,14 +64,14 @@ export default function Navbar({ onOpenDose, kissesCount }) {
             onClick={onOpenDose}
             className="btn-romantic"
             style={{
-              padding: '6px 12px',
-              fontSize: '0.78rem',
-              gap: '5px',
-              boxShadow: '0 4px 14px rgba(244, 63, 94, 0.3)'
+              padding: '7px 13px',
+              fontSize: '0.8rem',
+              gap: '6px',
+              boxShadow: '0 4px 14px rgba(244, 63, 94, 0.25)'
             }}
           >
             <Sparkles size={13} />
-            <span>Dose d'Amour</span>
+            <span>Pensée du Jour</span>
           </button>
         </div>
       </div>

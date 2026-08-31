@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, Sparkles, Play, Award, Heart } from 'lucide-react';
+import { HelpCircle, Sparkles, ArrowRight, Play, HeartHandshake } from 'lucide-react';
 import { loveConfig } from '../../data/loveData';
 import QuestionCard from './QuestionCard';
 import QuizResult from './QuizResult';
@@ -43,63 +43,69 @@ export default function CoupleQuiz({ onGoToCoupons }) {
       {/* Intro State */}
       {gameState === 'intro' && (
         <div className="glass-card" style={{
-          padding: '28px 20px',
+          padding: '32px 24px',
           textAlign: 'center',
-          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 243, 246, 0.9))',
-          border: '1px solid rgba(254, 205, 219, 0.9)'
+          background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 246, 248, 0.9))',
+          border: '1px solid rgba(254, 205, 219, 0.9)',
+          boxShadow: '0 16px 40px -10px rgba(244, 63, 94, 0.12)'
         }}>
+          {/* Refined Monogram Icon */}
           <div style={{
-            width: '64px',
-            height: '64px',
-            borderRadius: '50%',
+            width: '56px',
+            height: '56px',
+            borderRadius: '16px',
             background: 'linear-gradient(135deg, #ff3366, #ec4899)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            margin: '0 auto 16px',
-            boxShadow: '0 8px 20px rgba(244, 63, 94, 0.35)'
+            margin: '0 auto 18px',
+            boxShadow: '0 8px 24px rgba(244, 63, 94, 0.25)',
+            color: '#ffffff'
           }}>
-            <HelpCircle size={32} color="#ffffff" className="animate-bounce-soft" />
+            <HeartHandshake size={28} strokeWidth={2} />
           </div>
 
-          <span className="romantic-badge" style={{ marginBottom: '10px' }}>
-            <Sparkles size={13} color="#f59e0b" />
-            <span>Mini-Jeu Complice</span>
-          </span>
+          <div style={{ marginBottom: '12px' }}>
+            <span className="romantic-badge">
+              <Sparkles size={13} color="#d97706" />
+              <span>Complicité & Souvenirs</span>
+            </span>
+          </div>
 
           <h3 style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: '1.85rem',
+            fontSize: '2rem',
             fontWeight: 700,
             color: '#2b1b22',
-            marginBottom: '8px',
-            lineHeight: 1.2
+            marginBottom: '10px',
+            lineHeight: 1.25
           }}>
             {quizData.title}
           </h3>
 
           <p style={{
-            fontSize: '0.9rem',
+            fontSize: '0.92rem',
             color: '#6b505c',
-            maxWidth: '400px',
-            margin: '0 auto 24px',
-            lineHeight: 1.5
+            maxWidth: '420px',
+            margin: '0 auto 26px',
+            lineHeight: 1.55
           }}>
-            {quizData.subtitle} Réponds à ces 5 petites questions complices pour tester notre connexion et débloquer tes récompenses !
+            {quizData.subtitle}
           </p>
 
           <button
             onClick={handleStart}
             className="btn-romantic"
             style={{
-              padding: '14px 32px',
-              fontSize: '1rem',
+              padding: '14px 36px',
+              fontSize: '0.95rem',
               width: '100%',
-              maxWidth: '280px'
+              maxWidth: '280px',
+              letterSpacing: '0.3px'
             }}
           >
-            <Play size={18} fill="#ffffff" />
-            <span>Commencer le Quiz 💘</span>
+            <span>Démarrer le questionnaire</span>
+            <ArrowRight size={18} />
           </button>
         </div>
       )}
