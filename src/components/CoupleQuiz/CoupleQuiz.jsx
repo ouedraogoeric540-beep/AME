@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { HelpCircle, Sparkles, ArrowRight, HeartHandshake } from 'lucide-react';
 import { loveConfig } from '../../data/loveData';
-import initialQuestions from '../../data/questions.json';
+import siteData from '../../data/siteData.json';
 import QuestionCard from './QuestionCard';
 import QuizResult from './QuizResult';
 
@@ -11,7 +11,7 @@ export default function CoupleQuiz({ onGoToCoupons }) {
   const [score, setScore] = useState(0);
 
   const quizData = loveConfig.quiz;
-  const activeQuestions = (initialQuestions || []).filter(q => q.active);
+  const activeQuestions = (siteData.quiz?.questions || []).filter(q => q.active);
 
   const handleStart = () => {
     if (activeQuestions.length === 0) return;

@@ -1,6 +1,6 @@
 import { verifySessionToken, jsonResponse } from './utils/auth.js';
 import { getQuestionsFromGitHub } from './utils/github.js';
-import localQuestions from '../../src/data/questions.json' with { type: 'json' };
+import localSiteData from '../../src/data/siteData.json' with { type: 'json' };
 
 export async function handler(event) {
   if (event.httpMethod === 'OPTIONS') {
@@ -24,7 +24,7 @@ export async function handler(event) {
     // If GitHub is not yet configured (e.g. initial setup/local test), return local fallback with warning
     if (err.message?.includes('CONFIG_MISSING')) {
       return jsonResponse(200, {
-        questions: localQuestions,
+        questions: localSiteData.quiz?.questions || [],
         sha: 'local-dev-sha',
         source: 'local',
         warning: 'Configuration GitHub manquante sur Netlify. Affichage des données locales.'
